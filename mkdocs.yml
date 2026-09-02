@@ -24,8 +24,24 @@ theme:
 
 nav:
   - Home: index.md
+  - Installation: installation.md
+  - Usage Guide: usage.md
+  - Architecture: architecture.md
+  - API Reference: api-reference.md
 
 markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.superfences
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_root_heading: true
+            show_source: false
+            show_signature_annotations: true
+            members_order: source
