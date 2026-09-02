@@ -26,7 +26,8 @@ Theia is built on three core principles:
 │  (hardware)                        │
 └────────────────────────────────────┘
                │
-               └──► OAK-D stereo camera (for example)
+               ├──► OAK-D stereo camera
+               └──► OpenCV webcam
 ```
 
 ## Module organization
@@ -76,6 +77,14 @@ This layer contains production implementations for specific camera hardware.
 - Automatic IMU batch processing to extract the latest sensor data
 - Proper resource cleanup in `__exit__()` even when exceptions occur
 
+#### `hardware.webcam/`
+
+**`camera.py`**
+- `WebcamCamera`: Implements the `Camera` interface using OpenCV's
+     `VideoCapture`
+- Produces one color frame in `Metaframe.rgb`
+- Leaves stereo, depth, and IMU fields as `None`
+
 ### `theia/` - Application layer
 
 User-facing tools and utilities.
@@ -100,13 +109,11 @@ User command
     │
     └──► CLI (theia.cli.display_streams)
          │
-         └──► OakDCamera.__enter__()
+         └──► Selected camera backend.__enter__()
               │
-              └──► _build_pipeline()
-                   ├── Create RGB camera node
-                   ├── Create stereo depth nodes
-                   ├── Create IMU node
-                   └── Wire all nodes to Sync node
+              └──► Hardware-specific setup
+                   ├── Open the OAK-D pipeline
+                   └── Open the OpenCV webcam
               │
               └──► camera.start()
                    │
