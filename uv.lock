@@ -654,7 +654,9 @@ name = "theia"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "click" },
     { name = "depthai" },
+    { name = "numpy" },
     { name = "opencv-python" },
 ]
 
@@ -669,7 +671,9 @@ docs = [
 
 [package.metadata]
 requires-dist = [
+    { name = "click", specifier = ">=8.5.0" },
     { name = "depthai", specifier = ">=3.9.0" },
+    { name = "numpy", specifier = ">=2.5.2" },
     { name = "opencv-python", specifier = ">=5.0.0.93" },
 ]
 

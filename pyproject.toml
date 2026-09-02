@@ -8,12 +8,14 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "click>=8.5.0",
     "depthai>=3.9.0",
+    "numpy>=2.5.2",
     "opencv-python>=5.0.0.93",
 ]
 
 [project.scripts]
-theia = "theia:main"
+display_streams = "theia.cli:display_streams"
 
 [build-system]
 requires = ["uv_build>=0.12.8,<0.13.0"]
