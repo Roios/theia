@@ -29,9 +29,9 @@ The project tries to follow best practices in:
 ## Supported devices
 
 At the moment, Theia supports:
+
+- Basic commercial available webcams
 - OAK-D stereo camera (tested with the first generation) [link]([!](https://shop.luxonis.com/products/oak-d))
-
-
 
 ## Quick start
 

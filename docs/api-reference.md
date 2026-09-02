@@ -12,6 +12,10 @@
 
 ::: hardware.oakd.camera
 
+## Webcam
+
+::: hardware.webcam.camera
+
 ## Display tools
 
 ::: theia.display_streams
