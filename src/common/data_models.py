@@ -54,3 +54,33 @@ class Metaframe:
     depth: np.ndarray | None = None
     # IMU data
     imu: IMUData | None = None
+
+
+@dataclass(frozen=True)
+class CameraIntrinsics:
+    """Camera intrinsics and distortion coefficients.
+
+    Attributes:
+        intrinsic: Intrinsic matrix.
+        distortion: Distortion coefficients.
+    """
+
+    intrinsic: np.ndarray
+    distortion: np.ndarray
+
+
+@dataclass(frozen=True)
+class CameraCalibration:
+    """Camera calibration data.
+
+    Attributes:
+        rgb: RGB camera intrinsics and distortion coefficients.
+        left: Left mono camera intrinsics and distortion coefficients.
+        right: Right mono camera intrinsics and distortion coefficients.
+        extrinsic_left_to_right: Extrinsic matrix between left and right cameras.
+    """
+
+    rgb: CameraIntrinsics
+    left: CameraIntrinsics | None
+    right: CameraIntrinsics | None
+    extrinsic_left_to_right: np.ndarray | None
